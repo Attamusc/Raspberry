@@ -4,7 +4,5 @@
 "scripts": {
 	"start": "node index.js"
 },
-	"dependencies": {
-		"node-version": "0.4.9"
-	}
+	"dependencies": {}
 }
