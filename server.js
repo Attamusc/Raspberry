@@ -22,7 +22,7 @@ function start(route, handle) {
 
   }
 
-  http.createServer(onRequest).listen(process.env.PORT | 8001);
+  http.createServer(onRequest).listen(process.env.PORT || 8001);
   console.log("Server has started.");
 }
 
