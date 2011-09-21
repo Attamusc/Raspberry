@@ -4,6 +4,8 @@
 "scripts": {
 	"start": "node index.js"
 },
-"dependencies": {},
+"dependencies": {
+	"mustache": "0.3.1-dev"
+},
 "engine": "node 0.4.9"
 }
