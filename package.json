@@ -4,5 +4,6 @@
 "scripts": {
 	"start": "node index.js"
 },
-	"dependencies": {}
+"dependencies": {},
+"engine": "node 0.4.9"
 }
