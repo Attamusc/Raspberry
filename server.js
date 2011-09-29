@@ -1,18 +1,19 @@
-var http = require("http");
-var url = require("url");
+var http = require("http"),
+	url = require("url"),
+	util = require("util");
 
 function start(route, handle) {
   function onRequest(request, response) {
     var postData = "";
     var pathname = url.parse(request.url).pathname;
 	var resourcePath = "/" + url.parse(request.url).pathname.split("/")[1];
-    console.log("Request for " + pathname + " received.");
+    util.log("Request for " + pathname + " received.");
 
     request.setEncoding("utf8");
 
     request.addListener("data", function(postDataChunk) {
       postData += postDataChunk;
-      console.log("Received POST data chunk '"+
+      require("util").log("Received POST data chunk '"+
       postDataChunk + "'.");
     });
 
@@ -23,7 +24,7 @@ function start(route, handle) {
   }
 
   http.createServer(onRequest).listen(process.env.PORT || 8001);
-  console.log("Server has started.");
+  util.log("Raspberry Server has started.");
 }
 
 exports.start = start;

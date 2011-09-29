@@ -1,18 +1,20 @@
-var fs = require("fs");
-var mustache = require("./node_modules/mustache/mustache");
+var fs = require("fs"),
+	mustache = require("mustache"),
+	util = require("util");
 
-function process(template, data, response) {
-	fs.readFile(template, function(err, template) {
+function process(template, data, callback) {
+	fs.readFile("./views/" + template + ".html.mustache", function(err, template) {
 			if(err === null) {
-	            response.writeHead(200, {'Content-Type': 'text/html'});
-	            response.write(mustache.to_html(template.toString(), data));
-				response.end();
+	            var processedTemplate = mustache.to_html(template.toString(), data);
+				if(typeof(callback) === 'function') {
+					callback(processedTemplate);
+				}
 			}
 			else {
-				console.log("There was an error processing the template: " + template + " \n" + err);
-				response.writeHead(200, {"Content-Type": "text/plain"});
-				response.write("There was an error processing the template.");
-				response.end();
+				util.log("There was an error processing the template: " + template + " \n" + err);
+				if(typeof(callback) === 'function') {
+					callback("Read Error Occured!");
+				}
 			}
 	});
 }
