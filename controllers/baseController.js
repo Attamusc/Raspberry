@@ -3,9 +3,11 @@ var templateProcessor = require("../templateProcessor"),
 
 function BaseController() {
 	var self = this;
+	this.templateNS = "";
+	
 	this.render = function(templateName, data, response) {
-		// Does some stuff...
-		templateProcessor.process(templateName, data, function(html) {
+		// Pushes the template to the template processor and responds with the returned html.
+		templateProcessor.process(self.templateNS + "/" + templateName, data, function(html) {
 			if(html !== "Read Error Occured!") {
 				util.log("Rendering template " + templateName);
 				response.writeHead(200, {'Content-Type': 'text/html'});

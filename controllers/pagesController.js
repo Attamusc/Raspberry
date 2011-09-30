@@ -1,25 +1,30 @@
 var BaseController = require("./baseController"),
-	util = require("util");
+	util = require("util"),
+	User = require("../models/user");
 
 // Declare the Controller
 function PagesController() { 
 	PagesController.super_.call(this); 
 	var self = this;
+	this.templateNS = "pages";
 	
 	this.start = function(pathname, response, postData) {
 		util.log("Request handler 'start' from 'PagesController' was called");
-	  	var data = {
-			"title":"Scaly Blackjack Web" 
-		};
-	  	self.render("pages/index", data, response);
+	  	User.find("", [], function(users) {
+			var data = {
+				"title":"Scaly Blackjack Web",
+				"user": users[0]
+			};
+		  	self.render("index", data, response);
+		});
 	};
 
 	this.about = function(pathname, response, postData) {
-		util.log("[Request handler 'about' from 'PagesController' was called");
+		util.log("Request handler 'about' from 'PagesController' was called");
 	  	var data = {
 			"title":"About Scaly Blackjack Web"
 		};
-	  	self.render("pages/about", data, response);
+	  	self.render("about", data, response);
 	};
 }
 

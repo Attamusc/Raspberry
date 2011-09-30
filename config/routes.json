@@ -1,0 +1,6 @@
+[
+	{"path":"/", "verb":"GET", "controller":"pagesController", "method":"start"},
+	{"path":"/about", "verb":"GET", "controller":"pagesController", "method":"about"},
+	{"path":"/posts/:id", "verb":"GET", "controller":"pagesController", "method":"start"},
+	{"path":"/products/:id/reviews/:name", "verb":"POST", "controller":"pagesController", "method":"start"}
+]

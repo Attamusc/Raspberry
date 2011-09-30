@@ -1,13 +1,14 @@
 {
-"name": "NodeJsTest",
-"version": "0.1.0",
-"scripts": {
-	"start": "node index.js"
-},
-"dependencies": {
-	"mustache": "0.3.1-dev"
-	"stylus": "0.15.4"
-	"qunit": "0.1.3"
-},
-"engine": "node 0.4.11"
+	"name": "NodeJsTest",
+	"version": "0.1.0",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"mustache": "0.3.1-dev",
+		"stylus": "0.15.4",
+		"qunit": "0.1.3",
+		"db-mysql": "0.6.7"
+	},
+	"engine": "node 0.4.11"
 }
