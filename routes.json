@@ -1,4 +1,0 @@
-[
-	{"path":"/", "verb":"GET", "controller":"pagesController", "method":"start"},
-	{"path":"/about", "verb":"GET", "controller":"pagesController", "method":"about"}
-]
