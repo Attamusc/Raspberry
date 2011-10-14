@@ -4,13 +4,14 @@ var BaseController = require("./baseController"),
 
 // Declare the Controller
 function PagesController() { 
-	PagesController.super_.call(this); 
+	// Begin: Required Declarations
+	PagesController.super_.call(this);
 	var self = this;
-	this.templateNS = "pages";
-	
-	this.start = function(pathname, response, postData) {
+	// End: Required Declarations
+		
+	this.start = function(response, params) {
 		util.log("Request handler 'start' from 'PagesController' was called");
-	  	User.find("", [], function(users) {
+		User.find("", [], function(users) {
 			var data = {
 				"title":"Scaly Blackjack Web",
 				"user": users[0]
@@ -19,12 +20,14 @@ function PagesController() {
 		});
 	};
 
-	this.about = function(pathname, response, postData) {
+	this.about = function(response, params) {
 		util.log("Request handler 'about' from 'PagesController' was called");
-	  	var data = {
-			"title":"About Scaly Blackjack Web"
-		};
-	  	self.render("about", data, response);
+		User.save({"name":"Gaby", "fav_color":"blue"}, function() {
+			var data = {
+				"title":"About Scaly Blackjack Web"
+			};
+		  	self.render("about", data, response);	
+		});
 	};
 }
 

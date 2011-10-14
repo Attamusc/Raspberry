@@ -5,24 +5,24 @@ var server = require("./server"),
 	fs = require("fs"),
 	mysql = require("db-mysql"),
 	routingTable = [
-		new Route(new RegExp("^\/js\/.*\.js$"), "GET", function(pathname, response, postData) {
-					fs.readFile("." + pathname, function(err, javascript) {
+		new Route(new RegExp("^\/js\/.*\.js$"), "GET", function(response, params) {
+					fs.readFile("." + params.pathname, function(err, javascript) {
 					  util.log("Request handler 'js' was called.");
 					  response.writeHead(200, {"Content-Type": "text/javascript"});
 					  response.write(javascript.toString());
 					  response.end();
 					});
 				}),
-		new Route(new RegExp("^\/css\/.*\.css$"), "GET", function(pathname, response, postData) {
-					fs.readFile("." + pathname, function(err, stylesheet) {
+		new Route(new RegExp("^\/css\/.*\.css$"), "GET", function(response, params) {
+					fs.readFile("." + params.pathname, function(err, stylesheet) {
 					  util.log("Request handler 'css' was called.");
 					  response.writeHead(200, {"Content-Type": "text/css"});
 					  response.write(stylesheet.toString());
 					  response.end();
 					});
 				}),
-		new Route(new RegExp("^\/img\/.*\.\w+$"), "GET", function(pathname, response, postData) {
-					fs.readFile("." + pathname, function(err, image) {
+		new Route(new RegExp("^\/img\/.*\.\w+$"), "GET", function(response, params) {
+					fs.readFile("." + params.pathname, function(err, image) {
 					  util.log("Request handler 'img' was called.");
 					  response.writeHead(200, {"Content-Type": "image/png"});
 					  response.write(javascript.toString());

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{title}}</title>
+</head>
+<body>
+	<h1>Edit User</h1>
+	{{#user}}
+	<form action="/users/{{id}}" method="post" data-method="put" accept-charset="utf-8">
+		<label for="name">Name:</label><input id="name" name="name" value="{{name}}"><br/>
+		<label for="fav_color">Favorite Color:</label><input id="fav_color" name="fav_color" value="{{fav_color}}"><br/>
+		<p><input type="submit" value="Update User"></p>
+	</form>	
+	{{/user}}
+	
+	<script type="text/javascript" charset="utf-8" src="/js/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/rasp-client.js"></script>
+</body>
+</html>

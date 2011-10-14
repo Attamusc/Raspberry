@@ -1,10 +1,10 @@
 var util = require("util");
 
 function route(routingTable, httpVerb, pathname, response, postData) {
-  util.log("About to route a request for " + pathname);
+	httpVerb = postData._method === ("PUT" || "put") ? "PUT" : postData._method === ("DELETE" || "delete") ? "DELETE" : httpVerb;
 	for(var route = 0; route < routingTable.length; route++) {
-		if (typeof(routingTable[route].callback) === 'function' && httpVerb === routingTable[route].method && pathname.match(routingTable[route].regex)) {
-			routingTable[route].callback(pathname, response, postData, routingTable[route].match(pathname));
+		if (typeof(pathname.match(routingTable[route].regex) && (routingTable[route].method === (httpVerb || postDate._method)) && routingTable[route].callback) === 'function') {
+			routingTable[route].callback(response, { "pathname": pathname, "postData": postData, "restParams": routingTable[route].match(pathname).splice(1) });
 			return;
 		}
 		else if(route === routingTable.length - 1) {

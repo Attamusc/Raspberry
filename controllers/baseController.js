@@ -3,7 +3,7 @@ var templateProcessor = require("../templateProcessor"),
 
 function BaseController() {
 	var self = this;
-	this.templateNS = "";
+	this.templateNS = (self.constructor.name.replace("Controller", "")).toLowerCase();
 	
 	this.render = function(templateName, data, response) {
 		// Pushes the template to the template processor and responds with the returned html.
@@ -15,6 +15,12 @@ function BaseController() {
 				response.end();
 			}
 		});
+	};
+	
+	this.redirect = function(url, response) {
+		response.statusCode = 302;
+		response.setHeader("Location", url);
+		response.end();
 	};
 }
 

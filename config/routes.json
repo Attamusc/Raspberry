@@ -1,6 +1,12 @@
 [
-	{"path":"/", "verb":"GET", "controller":"pagesController", "method":"start"},
-	{"path":"/about", "verb":"GET", "controller":"pagesController", "method":"about"},
-	{"path":"/posts/:id", "verb":"GET", "controller":"pagesController", "method":"start"},
-	{"path":"/products/:id/reviews/:name", "verb":"POST", "controller":"pagesController", "method":"start"}
+	{"path":"/", 				"verb":"GET", 		"controller":"pagesController", "method":"start"},
+	{"path":"/about", 			"verb":"GET", 		"controller":"pagesController", "method":"about"},
+	
+	{"path":"/users", 			"verb":"GET", 		"controller":"UsersController", "method":"index"},
+	{"path":"/users", 			"verb":"POST", 		"controller":"UsersController", "method":"create"},
+	{"path":"/users/:id", 		"verb":"GET", 		"controller":"UsersController", "method":"show"},
+	{"path":"/users/:id", 		"verb":"PUT", 		"controller":"UsersController", "method":"update"},
+	{"path":"/users/:id", 		"verb":"DELETE", 	"controller":"UsersController", "method":"destroy"},
+	{"path":"/users/:id/edit", 	"verb":"GET", 		"controller":"UsersController", "method":"edit"},
+	{"path":"/users/new", 		"verb":"GET", 		"controller":"UsersController", "method":"new"}
 ]

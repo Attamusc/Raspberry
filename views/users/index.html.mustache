@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>{{title}}</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Favorite Color</th>
+			<th>Actions</th>
+		</tr>
+		{{#users}}
+		<tr>
+			<td><a href="/users/{{id}}">{{name}}</a></td>
+			<td>{{fav_color}}</td>
+			<td>
+				<a href="users/{{id}}/edit">Edit</a> | 
+				<a href="users/{{id}}/destroy"></a>
+			</td>
+		</tr>
+		{{/users}}
+	</table>
+	<a href="/users/new">Create User</a>
+	
+	<script type="text/javascript" charset="utf-8" src="/js/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/js/rasp-client.js"></script>
+</body>
+</html>
